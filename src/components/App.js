@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React from 'react'
 import '../styles/App.css';
 import { useEffect , useState } from 'react';
@@ -20,25 +19,19 @@ function App() {
 
   const [data, setData] = useState([]);
 
+  useEffect(()=>{
+    fetch("https://jsonplaceholder.typicode.com/users")
+    .then((res)=>res.json())
+    .then((data)=>{
+      //console.log(data)
+      setData(data)
+    })
+
+  },[])
+
   /**
    * fetch data from api on mount. 
    */
-
-  useEffect(() => { 
-    const getUsers = async () => { 
-        try {
-            const response = await axios.get("https://jsonplaceholder.typicode.com/users")
-            //console.log(response.data);
-            setData(response.data);
-        } catch (error){
-            console.error(error);
-        }
-  
-    };
-    getUsers();
-   
-}, []);
-
 
   return (
   <div className='App'>
