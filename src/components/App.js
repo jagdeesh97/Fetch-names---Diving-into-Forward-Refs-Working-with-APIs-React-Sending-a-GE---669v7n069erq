@@ -28,7 +28,7 @@ function App() {
     const getUsers = async () => { 
         try {
             const response = await axios.get("https://jsonplaceholder.typicode.com/users")
-            console.log(response.data);
+            //console.log(response.data);
             setData(response.data);
         } catch (error){
             console.error(error);
