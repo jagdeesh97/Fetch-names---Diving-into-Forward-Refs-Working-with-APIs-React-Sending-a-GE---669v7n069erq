@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react'
 import '../styles/App.css';
 import { useEffect , useState } from 'react';
@@ -22,6 +23,22 @@ function App() {
   /**
    * fetch data from api on mount. 
    */
+
+  useEffect(() => { 
+    const getUsers = async () => { 
+        try {
+            const response = await axios.get("https://jsonplaceholder.typicode.com/users")
+            console.log(response.data);
+            setData(response.data);
+        } catch (error){
+            console.error(error);
+        }
+  
+    };
+    getUsers();
+   
+}, []);
+
 
   return (
   <div className='App'>
